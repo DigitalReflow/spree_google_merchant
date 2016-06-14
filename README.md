@@ -1,3 +1,5 @@
+__This forked version of the gem is WIP and has a hard coded XML google RSS that's probably best avoided until it's cleaned up.__
+
 # Summary
 
 [![Code Climate](https://codeclimate.com/repos/5313bdf0695680405a00c039/badges/cd37fe1b53bc4d556c29/gpa.png)](https://codeclimate.com/repos/5313bdf0695680405a00c039/feed)
@@ -6,7 +8,7 @@
 Provides an up-to-date RSS product feed for Google Merchant rather a file that you have to upload. This is a very basic extension so feel free to help improve it!
 
 To test and access the RSS feed visit:
-`http://localhost:3000/google_merchant.rss`
+`http://locahost:3000/google_merchant.rss`
 
 ## Installation & Usage
 
