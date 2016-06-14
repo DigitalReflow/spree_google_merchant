@@ -6,7 +6,7 @@
 Provides an up-to-date RSS product feed for Google Merchant rather a file that you have to upload. This is a very basic extension so feel free to help improve it!
 
 To test and access the RSS feed visit:
-`http://locahost:3000/google_merchant.rss`
+`http://localhost:3000/google_merchant.rss`
 
 ## Installation & Usage
 
