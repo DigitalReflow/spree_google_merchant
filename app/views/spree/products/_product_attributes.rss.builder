@@ -22,18 +22,18 @@ gtin       = variant.product.product_properties.where(property_id: google_mercha
 ############## Required fields ################################################
 xml.tag! 'g:title', "#{variant.product.name} #{variant_options variant}"
 xml.tag! 'g:description', variant.product.description
-xml.tag! 'g:link ', @production_domain + 'products/' + variant.product.slug
+xml.tag! 'link ', @production_domain + '/products/' + variant.product.slug
 xml.tag! 'g:brand', (brand.try(:value) || 'Unbranded')
 xml.tag! 'g:image_link', variant.product.images.first.attachment.url(:product) unless variant.product.images.empty?
 
 # xml.tag! 'g:gtin', gtin.value
 xml.tag! 'g:mpn', variant.sku.to_s # No current mpn is defined so using sku.
-xml.tag! 'g:price', variant.price 
+xml.tag! 'g:price', "#{variant.price} GBP"
 xml.tag! 'g:id', variant.sku.to_s
 
 # ...more hard coding. Both slow and brittle; changing the taxonomy name in any way will break this. :(
 # todo: move this logic to the product class.
-xml.tag! 'g:condition', variant.product.taxons.find { |t| t.name  == 'Pre-owned' } ? 'pre-owned' : 'new'
+xml.tag! 'g:condition', variant.product.taxons.find { |t| t.name  == 'Pre-owned' } ? 'used' : 'new'
 
 xml.tag! 'g:availability', Spree::Stock::Quantifier.new(variant).total_on_hand > 0 ? 'in stock' : 'out of stock'
 
@@ -41,7 +41,7 @@ xml.tag! 'g:availability', Spree::Stock::Quantifier.new(variant).total_on_hand >
 xml.tag! 'g:shipping' do
   xml.tag! 'g:country', 'UK'
   xml.tag! 'g:service', 'Royal Mail'
-  xml.tag! 'g:price', 0
+  xml.tag! 'g:price', '0 GBP'
 end
 
 ############## Optional fields #################################################
