@@ -35,7 +35,7 @@ xml.tag! 'g:id', variant.sku.to_s
 # todo: move this logic to the product class.
 xml.tag! 'g:condition', variant.product.taxons.find { |t| t.name  == 'Pre-owned' } ? 'used' : 'new'
 
-xml.tag! 'g:availability', Spree::Stock::Quantifier.new(variant).total_on_hand > 0 ? 'in stock' : 'out of stock'
+xml.tag! 'g:availability', Spree::Stock::Quantifier.new(variant).backorderable? 'in stock' : 'out of stock'
 
 # Hard coded free shipping to the UK only
 xml.tag! 'g:shipping' do
